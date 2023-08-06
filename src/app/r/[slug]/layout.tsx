@@ -6,7 +6,7 @@ import { db } from "@/lib/db";
 import { format } from "date-fns";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { FC, ReactNode } from "react";
+import { ReactNode } from "react";
 
 interface LayoutProps {
   children: ReactNode;
@@ -15,7 +15,7 @@ interface LayoutProps {
   };
 }
 
-const Layout: FC<LayoutProps> = async ({ children, params: { slug } }) => {
+const Layout = async ({ children, params: { slug } }: LayoutProps) => {
   const session = await getAuthSession();
   const subreddit = await db.subreddit.findFirst({
     where: { name: slug },
