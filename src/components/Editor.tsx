@@ -101,10 +101,7 @@ const Editor: FC<EditorProps> = ({ subredditId }) => {
             config: {
               uploader: {
                 async uploadByFile(file: File) {
-                  const [res] = await uploadFiles({
-                    files: [file],
-                    endpoint: "imageUploader",
-                  });
+                  const [res] = await uploadFiles([file], "imageUploader");
 
                   return {
                     success: 1,

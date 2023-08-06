@@ -1,11 +1,8 @@
 import { INFINITE_SCROLLING_PAGINATION_RESULTS } from "@/config";
 import { db } from "@/lib/db";
-import { FC } from "react";
 import PostFeed from "./PostFeed";
 
-interface GeneralFeedProps {}
-
-const GeneralFeed: FC<GeneralFeedProps> = async ({}) => {
+const GeneralFeed = async () => {
   const posts = await db.post.findMany({
     orderBy: {
       createdAt: "desc",

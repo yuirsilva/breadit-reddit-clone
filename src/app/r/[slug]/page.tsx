@@ -12,7 +12,7 @@ interface PageProps {
   };
 }
 
-const page: FC<PageProps> = async ({ params }) => {
+const page = async ({ params }: PageProps) => {
   const { slug } = params;
 
   const session = await getAuthSession();

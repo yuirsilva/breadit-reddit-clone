@@ -1,13 +1,13 @@
 import { INFINITE_SCROLLING_PAGINATION_RESULTS } from "@/config";
-import { db } from "@/lib/db";
-import { FC } from "react";
-import PostFeed from "./PostFeed";
 import { getAuthSession } from "@/lib/auth";
+import { db } from "@/lib/db";
+import { notFound } from "next/navigation";
+import PostFeed from "./PostFeed";
 
-interface GeneralFeedProps {}
-
-const CustomFeed: FC<GeneralFeedProps> = async ({}) => {
+const CustomFeed = async () => {
   const session = await getAuthSession();
+
+  if (!session) return notFound();
 
   const followedCommunities = await db.subscription.findMany({
     where: {
