@@ -4,11 +4,11 @@ import { buttonVariants } from "@/components/ui/Button";
 import { getAuthSession } from "@/lib/auth";
 import { HomeIcon } from "lucide-react";
 import Link from "next/link";
-import { FC } from "react";
 
-interface pageProps {}
+export const dynamic = "force-dynamic";
+export const fetchCache = "force-no-store";
 
-const page: FC<pageProps> = async ({}) => {
+const Page = async ({}) => {
   const session = await getAuthSession();
 
   return (
@@ -49,4 +49,4 @@ const page: FC<pageProps> = async ({}) => {
   );
 };
 
-export default page;
+export default Page;
